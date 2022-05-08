@@ -4,6 +4,8 @@ import {
 	createAction,
 	createReducer,
 } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/dist/query';
+import { contactApi } from './Contacts/ContactsSlice';
 
 export const AddItem = createAction('items/Add');
 export const RemoveItem = createAction('items/Remove');
@@ -37,5 +39,11 @@ const ContactsReducer = combineReducers({
 export const store = configureStore({
 	reducer: {
 		contacts: ContactsReducer,
+		[contactApi.reducerPath]: contactApi.reducer,
 	},
+	middleware: getDefaultMiddleware => [
+		...getDefaultMiddleware(),
+		contactApi.middleware,
+	],
 });
+setupListeners(store.dispatch);

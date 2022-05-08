@@ -1,21 +1,27 @@
 import React from 'react';
-import { Elements } from './contactList.styled';
 import PropTypes from 'prop-types';
+import { useFetchContactsQuery } from 'redux/Contacts/ContactsSlice';
+
+import ContactListItem from '../contactItem/contactItem';
 
 function ContactList({ contList, deleteCont }) {
-    return contList.map(({ id, name, number }) => {
-        return (
-            <Elements key={id}>
-                {name}:{number}
-                <button onClick={() => deleteCont(id)}>Delete</button>
-            </Elements>
-        );
-    });
+	const { data: contacts } = useFetchContactsQuery();
+
+	if (contacts) {
+		return contacts.map(contact => {
+			return <ContactListItem key={contact.id} {...contact} />;
+		});
+	}
+	return (
+		<>
+			<p>Loading....</p>
+		</>
+	);
 }
 
 export default ContactList;
 
 ContactList.propTypes = {
-    key: PropTypes.string,
-    onClick: PropTypes.func,
+	key: PropTypes.string,
+	onClick: PropTypes.func,
 };
