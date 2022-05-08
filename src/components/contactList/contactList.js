@@ -9,6 +9,7 @@ function ContactList({ contList }) {
 			return <ContactListItem key={contact.id} {...contact} />;
 		});
 	}
+
 	return (
 		<>
 			<p>Loading....</p>

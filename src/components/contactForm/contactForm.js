@@ -5,7 +5,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useAddContactDataMutation } from 'redux/Contacts/ContactsSlice';
 
-function ContactForm({ filterContact, onAdd }) {
+function ContactForm({ filterContact }) {
 	const [name, setName] = useState('');
 	const [phone, setPhone] = useState('');
 	const [addContactData] = useAddContactDataMutation();
@@ -27,12 +27,11 @@ function ContactForm({ filterContact, onAdd }) {
 	function addContact(e) {
 		e.preventDefault();
 
-		filterContact.find(
+		filterContact?.find(
 			contact => contact.name.toLowerCase() === name.toLowerCase()
 		)
 			? toast.error(`${name} is already in contacts`)
 			: addContactData({ name, phone });
-		//  : onAdd(name, number);
 
 		setName('');
 		setPhone('');
