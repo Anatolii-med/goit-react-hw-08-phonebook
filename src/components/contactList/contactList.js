@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useFetchContactsQuery } from 'redux/Contacts/ContactsSlice';
 
 import ContactListItem from '../contactItem/contactItem';
 
-function ContactList({ contList, deleteCont }) {
-	const { data: contacts } = useFetchContactsQuery();
-
-	if (contacts) {
-		return contacts.map(contact => {
+function ContactList({ contList }) {
+	if (contList) {
+		return contList.map(contact => {
 			return <ContactListItem key={contact.id} {...contact} />;
 		});
 	}
