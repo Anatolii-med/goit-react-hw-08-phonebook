@@ -1,13 +1,13 @@
 import Section from 'components/section/section';
 import ContactForm from 'components/contactForm/contactForm';
 import ContactList from 'components/contactList/contactList';
-import { List } from 'ViewPages/contactsPage/contactsPage.styled';
+import { List } from 'ViewPages/ContactsPage/ContactsPage.styled';
 import Filter from 'components/filter/filter';
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useFetchContactsQuery } from 'redux/Contacts/ContactsSlice';
 
-function ContactsPage() {
+export function ContactsPage() {
 	const [filterValue, setfilterValue] = useState('');
 
 	const { data: contacts, error } = useFetchContactsQuery([]);
@@ -40,5 +40,3 @@ function ContactsPage() {
 		</>
 	);
 }
-
-export default ContactsPage;
