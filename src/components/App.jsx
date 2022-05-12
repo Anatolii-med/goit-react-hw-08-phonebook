@@ -1,41 +1,34 @@
-import Section from './section/section';
-import ContactForm from './contactForm/contactForm';
-import ContactList from './contactList/contactList';
-import { List } from './App.styled';
-import Filter from './filter/filter';
-import { useState } from 'react';
+import ContactsPage from 'ViewPages/contactsPage/contactsPage';
+import { Layout } from './Layout/Layout';
 import { Toaster } from 'react-hot-toast';
-import { useFetchContactsQuery } from 'redux/Contacts/ContactsSlice';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { HomePage } from 'ViewPages/HomePage/HomePage';
+import { LoginPage } from 'ViewPages/loginPage/loginPage';
+import { RegisterPage } from 'ViewPages/registerPage/registerPage';
+// import { lazy } from 'react';
+
+// const AsyncPageLoad = componentName => {
+// 	return lazy(() => {
+// 		return import(`Pages/${componentName}/${componentName}`).then(
+// 			module => {
+// 				return { default: module[componentName] };
+// 			}
+// 		);
+// 	});
+// };
 
 function App() {
-	const [filterValue, setfilterValue] = useState('');
-
-	const { data: contacts, error } = useFetchContactsQuery([]);
-
-	const normalizeFilter = filterValue.toLowerCase();
-	const filterCurrentName = contacts?.filter(contact =>
-		contact.name.toLowerCase().includes(normalizeFilter)
-	);
-
-	const onFilter = e => {
-		setfilterValue(e.target.value);
-	};
-
 	return (
 		<>
-			<Section title="Phonebook">
-				<ContactForm filterContact={filterCurrentName} />
-			</Section>
-			{contacts?.length === 0 || error ? (
-				'No contacts yet'
-			) : (
-				<Section title="Contacts">
-					<Filter filterValue={filterValue} onChange={onFilter} />
-					<List>
-						<ContactList contList={filterCurrentName} />
-					</List>
-				</Section>
-			)}
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route index element={<HomePage />} />
+					<Route path="/contacts" element={<ContactsPage />} />
+					<Route path="/register" element={<RegisterPage />} />
+					<Route path="/login" element={<LoginPage />} />
+					<Route path="*" element={<Navigate to="/" />} />
+				</Route>
+			</Routes>
 			<Toaster />
 		</>
 	);
