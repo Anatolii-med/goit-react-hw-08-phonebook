@@ -15,8 +15,8 @@ import { authReducer } from 'redux/auth/auth-slice';
 
 export const store = configureStore({
 	reducer: {
-		[contactApi.reducerPath]: contactApi.reducer,
 		auth: authReducer,
+		[contactApi.reducerPath]: contactApi.reducer,
 	},
 	middleware: getDefaultMiddleware => [
 		...getDefaultMiddleware({

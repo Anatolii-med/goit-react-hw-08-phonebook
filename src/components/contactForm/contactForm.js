@@ -7,7 +7,7 @@ import { useAddContactDataMutation } from 'redux/Contacts/ContactsSlice';
 
 function ContactForm({ filterContact }) {
 	const [name, setName] = useState('');
-	const [phone, setPhone] = useState('');
+	const [number, setNumber] = useState('');
 	const [addContactData] = useAddContactDataMutation();
 
 	function handleDataInput(e) {
@@ -16,8 +16,8 @@ function ContactForm({ filterContact }) {
 			case 'name':
 				setName(value);
 				break;
-			case 'phone':
-				setPhone(value);
+			case 'number':
+				setNumber(value);
 				break;
 			default:
 				break;
@@ -31,10 +31,10 @@ function ContactForm({ filterContact }) {
 			contact => contact.name.toLowerCase() === name.toLowerCase()
 		)
 			? toast.error(`${name} is already in contacts`)
-			: addContactData({ name, phone });
+			: addContactData({ name, number });
 
 		setName('');
-		setPhone('');
+		setNumber('');
 	}
 
 	return (
@@ -58,9 +58,9 @@ function ContactForm({ filterContact }) {
 					<input
 						autoComplete="off"
 						type="tel"
-						value={phone}
+						value={number}
 						onChange={handleDataInput}
-						name="phone"
+						name="number"
 						pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
 						title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
 						required
