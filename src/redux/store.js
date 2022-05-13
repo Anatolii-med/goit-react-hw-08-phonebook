@@ -12,6 +12,7 @@ import {
 	REGISTER,
 } from 'redux-persist';
 import { authReducer } from 'redux/auth/auth-slice';
+
 export const store = configureStore({
 	reducer: {
 		[contactApi.reducerPath]: contactApi.reducer,
