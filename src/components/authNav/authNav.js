@@ -1,10 +1,9 @@
-import { NavLink } from 'react-router-dom';
-
+import { BarLinks } from './authNav.styled.js';
 export function LoginNavigation() {
 	return (
-		<>
-			<NavLink to="/register">Register</NavLink>
-			<NavLink to="/login">login</NavLink>
-		</>
+		<div>
+			<BarLinks to="/register">Register</BarLinks>
+			<BarLinks to="/login">login</BarLinks>
+		</div>
 	);
 }

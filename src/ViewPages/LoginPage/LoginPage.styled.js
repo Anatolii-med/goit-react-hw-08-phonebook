@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 
-export const FormWrap = styled.form`
-	margin: 10px;
+export const FormWrap = styled.div`
+	margin: 50px 0;
 	padding: 20px;
-	width: 300px;
-	display: inline-flex;
-	flex-direction: column;
+	width: 40%;
+	display: flex;
+	justify-content: center;
 	background-color: #161b22;
-	box-shadow: 4px 4px 8px 8px rgba(91, 128, 160, 0.2);
+	box-shadow: 2px 2px 4px 4px rgba(91, 128, 160, 0.2);
 `;
 export const Labels = styled.label`
 	margin-bottom: 10px;
@@ -27,9 +27,9 @@ export const InputArea = styled.input`
 	}
 `;
 
-export const BtnAddContact = styled.button`
+export const BtnLogIn = styled.button`
 	display: inline-flex;
-	margin: 10px 0;
+	margin: 10px 0 0 0;
 
 	justify-content: center;
 	align-items: base;
@@ -48,6 +48,7 @@ export const BtnAddContact = styled.button`
 
 	&:hover {
 		color: #5b80a0;
-		border-radius: 10px;
+		transform: scale(0.95);
+		border-radius: 25px;
 	}
 `;

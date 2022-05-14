@@ -1,16 +1,18 @@
-import { Elements } from '../contactList/contactList.styled';
+import { Elements, Buttons, Text } from '../contactList/contactList.styled';
 import { useDeleteContactMutation } from 'redux/Contacts/ContactsSlice';
 
-function ContactListItem({ id, name, phone }) {
+function ContactListItem({ id, name, number }) {
 	const [deleteContact, { isLoading: isDeleting }] =
 		useDeleteContactMutation();
 
 	return (
 		<Elements key={id}>
-			{name}:{phone}
-			<button onClick={() => deleteContact(id)} disabled={isDeleting}>
+			<Text>
+				{name} : {number}
+			</Text>
+			<Buttons onClick={() => deleteContact(id)} disabled={isDeleting}>
 				{isDeleting ? 'deleting...' : 'Delete'}
-			</button>
+			</Buttons>
 		</Elements>
 	);
 }

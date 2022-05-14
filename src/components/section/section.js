@@ -1,18 +1,18 @@
 import React from 'react';
-import { SectionWrap } from './section.styled';
+import { SectionWrap, Title } from './section.styled';
 import PropTypes from 'prop-types';
 
 function Section({ title, children }) {
-    return (
-        <SectionWrap>
-            <h2>{title}</h2>
-            {children}
-        </SectionWrap>
-    );
+	return (
+		<SectionWrap>
+			<Title>{title}</Title>
+			{children}
+		</SectionWrap>
+	);
 }
 
 export default Section;
 
 Section.propTypes = {
-    title: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
 };

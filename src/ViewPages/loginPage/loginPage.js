@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
+import { FormWrap, Labels, InputArea, BtnLogIn } from './LoginPage.styled';
 
-export function LoginPage() {
+export default function LoginPage() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -26,28 +27,28 @@ export function LoginPage() {
 	};
 
 	return (
-		<>
+		<FormWrap>
 			<form autoComplete="off" onSubmit={handleSubmit}>
-				<label>
-					<input
+				<Labels>
+					<InputArea
 						placeholder="email"
 						type="email"
 						value={email}
 						name="email"
 						onChange={handleChange}
 					/>
-				</label>
-				<label>
-					<input
+				</Labels>
+				<Labels>
+					<InputArea
 						placeholder="password"
 						type="password"
 						value={password}
 						name="password"
 						onChange={handleChange}
 					/>
-				</label>
-				<button type="submit">LogIn</button>
+				</Labels>
+				<BtnLogIn type="submit">LogIn</BtnLogIn>
 			</form>
-		</>
+		</FormWrap>
 	);
 }

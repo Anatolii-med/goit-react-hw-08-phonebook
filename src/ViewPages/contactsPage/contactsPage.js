@@ -1,13 +1,13 @@
 import Section from 'components/section/section';
 import ContactForm from 'components/contactForm/contactForm';
 import ContactList from 'components/contactList/contactList';
-import { List } from 'ViewPages/ContactsPage/ContactsPage.styled';
+import { List, Wrap, Text } from 'ViewPages/ContactsPage/ContactsPage.styled';
 import Filter from 'components/filter/filter';
 import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useFetchContactsQuery } from 'redux/Contacts/ContactsSlice';
 
-export function ContactsPage() {
+export default function ContactsPage() {
 	const [filterValue, setfilterValue] = useState('');
 
 	const { data: contacts, error } = useFetchContactsQuery([]);
@@ -22,12 +22,12 @@ export function ContactsPage() {
 	};
 
 	return (
-		<>
+		<Wrap>
 			<Section title="Phonebook">
 				<ContactForm filterContact={filterCurrentName} />
 			</Section>
 			{contacts?.length === 0 || error ? (
-				'No contacts yet'
+				<Text>No contacts yet</Text>
 			) : (
 				<Section title="Contacts">
 					<Filter filterValue={filterValue} onChange={onFilter} />
@@ -37,6 +37,6 @@ export function ContactsPage() {
 				</Section>
 			)}
 			<Toaster />
-		</>
+		</Wrap>
 	);
 }

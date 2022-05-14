@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Text } from './contactList.styled';
 import ContactListItem from '../contactItem/contactItem';
 
 function ContactList({ contList }) {
@@ -12,7 +12,7 @@ function ContactList({ contList }) {
 
 	return (
 		<>
-			<p>Loading....</p>
+			<Text>Loading....</Text>
 		</>
 	);
 }

@@ -1,3 +1,10 @@
-export function HomePage() {
-	return <h1>HomePage</h1>;
+import { Title, Text } from './HomePage.styled';
+export default function HomePage() {
+	return (
+		<>
+			<Title>!!Hello!!</Title>
+			<Text>This is the BEST phonebook!!</Text>
+			<Text> SignUp or LogIn and enjoy!</Text>
+		</>
+	);
 }

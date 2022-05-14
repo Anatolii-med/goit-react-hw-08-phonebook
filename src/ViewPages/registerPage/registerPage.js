@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
+import { FormWrap, Labels, InputArea, BtnReg } from './RegisterPage.styled';
 
-export function RegisterPage() {
+export default function RegisterPage() {
 	const dispatch = useDispatch();
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -30,37 +31,37 @@ export function RegisterPage() {
 	};
 
 	return (
-		<>
+		<FormWrap>
 			<form autoComplete="off" onSubmit={handleSubmit}>
-				<label>
-					<input
+				<Labels>
+					<InputArea
 						placeholder="name"
 						type="text"
 						value={name}
 						name="name"
 						onChange={handleChange}
 					/>
-				</label>
-				<label>
-					<input
+				</Labels>
+				<Labels>
+					<InputArea
 						placeholder="email"
 						type="email"
 						value={email}
 						name="email"
 						onChange={handleChange}
 					/>
-				</label>
-				<label>
-					<input
+				</Labels>
+				<Labels>
+					<InputArea
 						placeholder="password"
 						type="password"
 						value={password}
 						name="password"
 						onChange={handleChange}
 					/>
-				</label>
-				<button type="submit">Register</button>
+				</Labels>
+				<BtnReg type="submit">Register</BtnReg>
 			</form>
-		</>
+		</FormWrap>
 	);
 }

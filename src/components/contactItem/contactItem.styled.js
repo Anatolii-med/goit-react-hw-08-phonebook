@@ -48,6 +48,7 @@ export const BtnAddContact = styled.button`
 
 	&:hover {
 		color: #5b80a0;
-		border-radius: 10px;
+		transform: scale(0.95);
+		border-radius: 25px;
 	}
 `;
