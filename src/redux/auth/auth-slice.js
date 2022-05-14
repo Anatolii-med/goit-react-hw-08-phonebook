@@ -25,9 +25,13 @@ const authSlice = createSlice({
 			state.isLoggedIn = true;
 		},
 		[authOperations.logOut.fulfilled](state, action) {
-			state.user = initialState.name;
+			state.user = initialState.user;
 			state.token = initialState.token;
 			state.isLoggedIn = initialState.isLoggedIn;
+		},
+		[authOperations.fetchCurrentUser.fulfilled](state, action) {
+			state.user = action.payload;
+			state.isLoggedIn = true;
 		},
 	},
 });
@@ -35,7 +39,7 @@ const authSlice = createSlice({
 const persistConfig = {
 	key: 'root',
 	storage,
-	// whitelist: [token],
+	whitelist: ['token'],
 };
 
 export const authReducer = persistReducer(persistConfig, authSlice.reducer);

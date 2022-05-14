@@ -5,25 +5,16 @@ import { ContactsPage } from 'ViewPages/ContactsPage/ContactsPage';
 import { HomePage } from 'ViewPages/HomePage/HomePage';
 import { LoginPage } from 'ViewPages/LoginPage/LoginPage';
 import { RegisterPage } from 'ViewPages/RegisterPage/RegisterPage';
-
-// import { lazy } from 'react';
-
-// const AsyncPageLoad = componentName => {
-// 	return lazy(() => {
-// 		return import(`ViewPages/${componentName}/${componentName}`).then(
-// 			module => {
-// 				return { default: module[componentName] };
-// 			}
-// 		);
-// 	});
-// };
-
-// const HomePage = AsyncPageLoad('HomePage');
-// const ContactsPage = AsyncPageLoad('ContactsPage');
-// const RegisterPage = AsyncPageLoad('RegisterPage');
-// const LoginPage = AsyncPageLoad('LoginPage');
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import authOperations from 'redux/auth/auth-operations';
 
 function App() {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(authOperations.fetchCurrentUser());
+	}, [dispatch]);
+
 	return (
 		<>
 			<Routes>
