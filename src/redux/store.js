@@ -3,7 +3,6 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { contactApi } from './Contacts/ContactsSlice';
 import {
 	persistStore,
-	persistReducer,
 	FLUSH,
 	REHYDRATE,
 	PAUSE,
