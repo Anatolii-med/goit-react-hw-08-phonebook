@@ -2,6 +2,7 @@
 // import { LoginPage } from '../ViewPages/LoginPage/LoginPage';
 // import { ContactsPage } from 'ViewPages/ContactsPage/ContactsPage';
 // import RegisterPage from 'ViewPages/RegisterPage/RegisterPage';
+
 import { Layout } from './Layout/Layout';
 import { Toaster } from 'react-hot-toast';
 import { Routes, Route, Navigate } from 'react-router-dom';
@@ -11,7 +12,7 @@ import authOperations from 'redux/auth/auth-operations';
 import authSelectors from 'redux/auth/auth-selectors';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
-import { AppContainer } from './App.styled';
+import { AppContainer, LoadingSpinner } from './App.styled';
 
 const HomePage = lazy(() => import('ViewPages/HomePage/HomePage'));
 const ContactsPage = lazy(() =>
@@ -36,7 +37,9 @@ function App() {
 		!isFetchingCurrentUser && (
 			<AppContainer>
 				<Layout />
-				<Suspense fallback={<p>***********************</p>}>
+				<Suspense
+					fallback={<LoadingSpinner speed={200} color="#90caf9" />}
+				>
 					<Routes>
 						<Route path="/">
 							<Route index element={<HomePage />} />
