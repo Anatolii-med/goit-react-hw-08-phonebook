@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
 import { FormWrap, Labels, InputArea, BtnLogIn } from './LoginPage.styled';
 
-export default function LoginPage() {
+export function LoginPage() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
