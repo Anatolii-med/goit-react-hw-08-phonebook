@@ -1,10 +1,10 @@
+import HomePage from 'ViewPages/HomePage/HomePage';
+import { LoginPage } from '../ViewPages/LoginPage/LoginPage';
+import { ContactsPage } from 'ViewPages/ContactsPage/ContactsPage';
+import RegisterPage from 'ViewPages/RegisterPage/RegisterPage';
 import { Layout } from './Layout/Layout';
 import { Toaster } from 'react-hot-toast';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import HomePage from 'ViewPages/HomePage/HomePage';
-import { LoginPage } from '../ViewPages/LoginPage/LoginPage';
-import RegisterPage from 'ViewPages/RegisterPage/RegisterPage';
-import { ContactsPage } from 'ViewPages/ContactsPage/ContactsPage';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/auth-operations';
