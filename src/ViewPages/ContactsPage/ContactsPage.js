@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useFetchContactsQuery } from 'redux/Contacts/ContactsSlice';
 
-export function ContactsPage() {
+export default function ContactsPage() {
 	const [filterValue, setfilterValue] = useState('');
 
 	const { data: contacts, error } = useFetchContactsQuery([]);
